@@ -1,0 +1,27 @@
+﻿<h3>Form001</h3>
+<form>
+    <input type="text" @bind-value="@messageValue"/>
+    <input type="button" value="Click me" @onclick="ChangeText"/>
+</form>
+<div>
+    <h1>Aqui se mostrara tu texto</h1>
+    <p>@message</p>
+</div>
+
+@code{
+    [Parameter]
+    public string Message { get; set; }
+
+    string message = "Aqui se escribira un mensaje";
+    string messageValue = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        message = Message;        
+    }
+
+    private void ChangeText()
+    {
+        message = messageValue;
+    }
+}
